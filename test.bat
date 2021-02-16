@@ -1,3 +1,4 @@
+java -jar build\libs\gauss-1.0.jar tests\test0
 java -jar build\libs\gauss-1.0.jar tests\test1
 java -jar build\libs\gauss-1.0.jar tests\test2
 java -jar build\libs\gauss-1.0.jar tests\test3
