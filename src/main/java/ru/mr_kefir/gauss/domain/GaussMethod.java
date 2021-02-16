@@ -28,7 +28,7 @@ public final class GaussMethod {
             double factor = triangleMatrix.get(i, i);
 
             if (factor == 0) {
-                int targetLine = findLineWithFirstNotZeroFactor(i);
+                int targetLine = findLineWithFirstNotZeroFactor(i, i);
 
                 triangleMatrix.swapLines(i, targetLine);
 
@@ -47,8 +47,8 @@ public final class GaussMethod {
         }
     }
 
-    private int findLineWithFirstNotZeroFactor(int columnIndex) {
-        for (int i = 0; i < triangleMatrix.getSizeI(); i++) {
+    private int findLineWithFirstNotZeroFactor(int startLineIndex, int columnIndex) {
+        for (int i = startLineIndex; i < triangleMatrix.getSizeI(); i++) {
             if (triangleMatrix.get(i, columnIndex) != 0) {
                 return i;
             }
@@ -68,7 +68,7 @@ public final class GaussMethod {
         double freeMember = triangleMatrix.get(lineIndex, triangleMatrix.getSizeJ() - 1);
 
         if (lineIndex < triangleMatrix.getSizeI() - 1) {
-            for (int j = triangleMatrix.getSizeJ() - 2; j >= triangleMatrix.getSizeJ() - 2 - (triangleMatrix.getSizeI() - 1 - lineIndex); j--) {
+            for (int j = triangleMatrix.getSizeJ() - 2; j >= lineIndex; j--) {
                 freeMember -= triangleMatrix.get(lineIndex, j) * solution.get(j, 0);
             }
         }
